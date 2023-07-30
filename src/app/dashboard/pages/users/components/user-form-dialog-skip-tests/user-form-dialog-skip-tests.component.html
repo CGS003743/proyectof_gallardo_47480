@@ -1,0 +1,54 @@
+
+<H1 mat-dialog-title>CREAR USUARIO</H1>
+<div mat-dialog-content>
+<form [formGroup]="userForm" class="grid">
+    <div class="col-6 fields" >
+    <mat-form-field class="w-full" >
+        <mat-label>Nombre </mat-label>
+        <input formControlName="name" matInput type="text" name="name">
+        <mat-error *ngIf=" nameControl.hasError('required')">
+            este campo es requerido
+        </mat-error>
+        <mat-error *ngIf=" nameControl.hasError('minLength')">
+           el campo debe tener al menos {{nameControl.errors?.['minLength']?.requiredLength}} caracteres 
+        </mat-error>
+        <mat-error *ngIf=" nameControl.hasError('noHomero')">
+            no se admiten homeros XD
+        </mat-error>
+    </mat-form-field>
+    </div>
+    <div class="col-6 fields" >
+    <mat-form-field class="w-full">
+        <mat-label>Apellido </mat-label>
+        <input formControlName="surname" matInput type="text" name="surname">
+        <mat-error *ngIf=" surnameControl.hasError('required')">
+            este campo es requerido</mat-error>    
+    </mat-form-field >
+       
+    </div>
+    <div class="col-6 fields">
+    <mat-form-field class="w-full"  >
+        <mat-label>Email </mat-label>
+        <input formControlName="email" matInput type="text" name="email">
+        <mat-error *ngIf=" emailControl.hasError('required')">
+            este campo es requerido</mat-error> 
+    </mat-form-field>
+    </div>
+    <div class="col-12 field">
+    <mat-form-field class="w-full" >
+        <mat-label>Contraseña  </mat-label>
+        <input formControlName="password" matInput type="text" name="password">
+        <mat-error *ngIf=" passwordControl.hasError('required')">
+            este campo es requerido</mat-error> 
+    </mat-form-field>
+    
+    </div>
+  
+</form>
+
+  <div class="flex justify-content-end" mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancelar</button>
+    <button (click)="onSubmit()" type=" submit" mat-button>Guardar </button>
+  
+</div>
+
